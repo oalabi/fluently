@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { AppHeader } from "@/components/layout/AppHeader";
 import { JourneyMap } from "@/components/JourneyMap";
+import { RangerGuide } from "@/components/characters/LanguageMascot";
 import { useProgress } from "@/context/ProgressContext";
 
 const SIDEBAR = [
@@ -58,6 +59,10 @@ export default function LearnHomePage({
             </Link>
           ))}
         </nav>
+
+        <div className="flex justify-center -mb-2">
+          <RangerGuide className="h-24 w-32" />
+        </div>
 
         <JourneyMap
           lessons={pack.lessons}

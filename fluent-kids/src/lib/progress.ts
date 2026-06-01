@@ -16,6 +16,25 @@ function defaultProgress(language: LanguageCode): UserProgress {
   };
 }
 
+export function loadAllProgress(): Record<LanguageCode, UserProgress> {
+  const result: Record<string, UserProgress> = {
+    yoruba: defaultProgress("yoruba"),
+    twi: defaultProgress("twi"),
+  };
+  if (typeof window === "undefined") return result as Record<LanguageCode, UserProgress>;
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if (!raw) return result as Record<LanguageCode, UserProgress>;
+    const all = JSON.parse(raw) as Record<string, UserProgress>;
+    return {
+      yoruba: all.yoruba ?? defaultProgress("yoruba"),
+      twi: all.twi ?? defaultProgress("twi"),
+    };
+  } catch {
+    return result as Record<LanguageCode, UserProgress>;
+  }
+}
+
 export function loadProgress(language: LanguageCode): UserProgress {
   if (typeof window === "undefined") return defaultProgress(language);
   try {
@@ -43,6 +62,22 @@ export function saveProgress(progress: UserProgress): void {
   }
 }
 
+export function exportProgressJson(): string {
+  if (typeof window === "undefined") return "{}";
+  return localStorage.getItem(STORAGE_KEY) ?? "{}";
+}
+
+export function importProgressJson(json: string): boolean {
+  if (typeof window === "undefined") return false;
+  try {
+    JSON.parse(json);
+    localStorage.setItem(STORAGE_KEY, json);
+    return true;
+  } catch {
+    return false;
+  }
+}
+
 export function completeActivity(
   language: LanguageCode,
   activityId: string,
@@ -57,7 +92,7 @@ export function completeActivity(
     ...current,
     xp: current.xp + xpGain,
     completedActivities,
-    streak: current.streak + (completedActivities.length > current.completedActivities.length ? 0 : 0),
+    streak: current.streak,
   };
 
   if (updated.xp >= 100 && !updated.trophies.includes("bronze")) {

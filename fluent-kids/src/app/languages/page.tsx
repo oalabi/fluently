@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { languages, comingSoonLanguages } from "@/data/languages";
+import { LanguageMascot } from "@/components/characters/LanguageMascot";
 
 export default function LanguageSelectPage() {
   return (
@@ -22,9 +23,10 @@ export default function LanguageSelectPage() {
               href={`/learn/${lang.code}`}
               className="flex flex-col items-center gap-3 rounded-3xl bg-white/10 p-6 active:scale-95 transition-transform"
             >
-              <div className="flex h-24 w-24 items-center justify-center rounded-full bg-gradient-to-br from-fluent-purple to-fluent-blue text-5xl shadow-card">
-                {lang.characterEmoji}
-              </div>
+              <LanguageMascot
+                language={lang.code as "yoruba" | "twi"}
+                size={96}
+              />
               <span className="text-lg font-bold text-white">{lang.name}</span>
               <span className="text-xs text-white/60">{lang.nativeName}</span>
             </Link>

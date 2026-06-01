@@ -15,6 +15,8 @@ import { PronunciationController } from "@/components/PronunciationController";
 import { ConversationPractice } from "@/components/activities/ConversationPractice";
 import { StoryActivity } from "@/components/activities/StoryActivity";
 import { ProverbActivity } from "@/components/activities/ProverbActivity";
+import { VideoPlayer } from "@/components/VideoPlayer";
+import { videoLibrary } from "@/data/videos";
 
 interface ActivityRendererProps {
   activity: LessonActivity;
@@ -93,22 +95,22 @@ export function ActivityRenderer({
           onComplete={onComplete}
         />
       );
-    case "video":
-      return (
-        <div className="px-4 text-center text-white">
-          <p className="mb-4">🎬 Video lessons coming soon!</p>
-          <p className="text-white/60 text-sm">
-            We will integrate animated stories from open educational resources.
-          </p>
+    case "video": {
+      const videos = videoLibrary[lang];
+      const video = videos[0];
+      return video ? (
+        <div className="px-4">
+          <VideoPlayer video={video} />
           <button
             type="button"
             onClick={onComplete}
-            className="touch-target mt-6 rounded-full bg-fluent-green px-8 py-3 font-bold"
+            className="touch-target mt-6 w-full rounded-full bg-fluent-green py-3 font-bold text-white"
           >
             Continue
           </button>
         </div>
-      );
+      ) : null;
+    }
     default:
       return (
         <button

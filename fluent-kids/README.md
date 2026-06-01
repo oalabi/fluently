@@ -32,13 +32,29 @@ Vocabulary audio uses browser TTS (`yo`, `tw` BCP-47) when dedicated clips are n
 
 See `src/data/*/vocabulary.ts` for per-item `audioSource` attribution fields.
 
-## Development
+## Demo (ready to use)
 
 ```bash
 cd fluent-kids
 npm install
+npm run fetch-audio   # downloads Wikimedia/Lingua Libre clips (first time)
 npm run dev
 ```
+
+Open **http://localhost:3000** on a phone, tablet, or narrow browser window.
+
+| Route | What to try |
+|-------|-------------|
+| `/` | Splash → Start learning |
+| `/languages` | Pick Yoruba or Twi (SVG mascots) |
+| `/learn/twi` | Journey map + Lesson 1 → **Pronunciation** (bundled `maakye.wav`) |
+| `/learn/twi/games/audio-matching` | Hear real native audio |
+| `/learn/yoruba/library` | Folktales + embedded video |
+| `/parent` | Parent dashboard — XP, export/import progress |
+
+Bundled audio lives in `public/audio/` (CC BY-SA 4.0, Lingua Libre / Wikimedia).
+
+## Development
 
 Open on a phone or tablet viewport (max-width 512px). The UI is optimized for touch and portrait orientation.
 

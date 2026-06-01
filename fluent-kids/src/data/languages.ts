@@ -1,4 +1,5 @@
 import { LanguagePack } from "@/types/curriculum";
+import { applyPublicAudioToVocabulary } from "./audio/public-audio";
 import { yorubaVocabulary } from "./yoruba/vocabulary";
 import { yorubaLessons } from "./yoruba/lessons";
 import { twiVocabulary } from "./twi/vocabulary";
@@ -78,7 +79,7 @@ export const languages: LanguagePack[] = [
     flagEmoji: "🇳🇬",
     characterEmoji: "🧒🏾",
     description: "Speak and read Yoruba like a native — from Ẹ káàárọ̀ to folktales!",
-    vocabulary: yorubaVocabulary,
+    vocabulary: applyPublicAudioToVocabulary(yorubaVocabulary),
     lessons: yorubaLessons,
     proverbs: yorubaProverbs,
     folktales: yorubaFolktales,
@@ -90,7 +91,7 @@ export const languages: LanguagePack[] = [
     flagEmoji: "🇬🇭",
     characterEmoji: "👧🏾",
     description: "Learn Asante Twi through games, stories, and songs!",
-    vocabulary: twiVocabulary,
+    vocabulary: applyPublicAudioToVocabulary(twiVocabulary),
     lessons: twiLessons,
     proverbs: twiProverbs,
     folktales: twiFolktales,

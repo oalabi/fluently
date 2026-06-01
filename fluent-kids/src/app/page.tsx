@@ -33,6 +33,12 @@ export default function SplashPage() {
         >
           Start learning →
         </Link>
+        <Link
+          href="/parent"
+          className="touch-target mt-4 text-sm text-white/50 underline"
+        >
+          Parent dashboard
+        </Link>
       </div>
 
       <p className="pb-8 text-center text-sm text-white/50">iamfluent.com</p>

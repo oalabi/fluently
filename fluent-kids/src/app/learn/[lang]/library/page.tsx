@@ -5,6 +5,8 @@ import { AppHeader } from "@/components/layout/AppHeader";
 import { useProgress } from "@/context/ProgressContext";
 import { playVocabAudio, sliderToPlaybackRate } from "@/lib/audio";
 import { LanguageCode } from "@/types/curriculum";
+import { VideoPlayer } from "@/components/VideoPlayer";
+import { videoLibrary } from "@/data/videos";
 import { useState } from "react";
 
 export default function LibraryPage({ params }: { params: { lang: string } }) {
@@ -65,11 +67,18 @@ export default function LibraryPage({ params }: { params: { lang: string } }) {
         </section>
 
         <section>
-          <h2 className="mb-3 text-lg font-bold text-fluent-yellow">🎬 Videos</h2>
-          <p className="rounded-2xl bg-white/5 p-4 text-sm text-white/60">
-            Animated stories and conversation videos will appear here. Content will
-            integrate open educational resources and BibleTTS narration (CC BY-SA 4.0).
-          </p>
+          <div className="mb-3 flex items-center justify-between">
+            <h2 className="text-lg font-bold text-fluent-yellow">🎬 Videos</h2>
+            <Link
+              href={`/learn/${params.lang}/videos`}
+              className="text-sm text-fluent-sky-light"
+            >
+              See all →
+            </Link>
+          </div>
+          {(videoLibrary[lang] ?? []).slice(0, 1).map((video) => (
+            <VideoPlayer key={video.id} video={video} />
+          ))}
         </section>
 
         <Link
