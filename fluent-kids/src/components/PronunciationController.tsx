@@ -80,36 +80,35 @@ export function PronunciationController({
                   ? i === 2
                     ? "bg-fluent-coral"
                     : "bg-fluent-blue"
-                  : "bg-white/20"
+                  : "bg-fluent-purple/15"
             }`}
           >
             {i === 2 && stepIndex >= 2 && (
-              <span className="text-[10px] text-white">🎤</span>
+              <span className="text-[10px]">🎤</span>
             )}
           </div>
         ))}
       </div>
 
-      <div className="relative flex h-56 w-56 items-center justify-center rounded-full bg-gradient-to-br from-fluent-purple-light to-fluent-blue shadow-glow">
-        <p className="text-center text-3xl font-bold text-white text-shadow-kid">
+      <div className="relative flex h-56 w-56 items-center justify-center rounded-full bg-gradient-to-br from-fluent-purple-light to-fluent-blue shadow-avatar-glow">
+        <p className="text-center text-3xl font-extrabold text-white text-shadow-kid">
           {item.native}
         </p>
         {isPlaying && (
-          <span className="absolute inset-0 animate-pulse-ring rounded-full border-4 border-white/40" />
+          <span className="absolute inset-0 animate-pulse-ring rounded-full border-4 border-white/50" />
         )}
       </div>
 
-      <p className="text-lg text-white/80">{item.english}</p>
+      <p className="text-lg font-semibold text-fluent-purple-dark">{item.english}</p>
       {item.phonetic && (
-        <p className="text-sm text-fluent-sky-light">({item.phonetic})</p>
+        <p className="text-sm text-fluent-purple-soft">({item.phonetic})</p>
       )}
 
-      {/* Waveform decoration */}
       <div className="flex h-8 items-end justify-center gap-1">
         {Array.from({ length: 12 }).map((_, i) => (
           <div
             key={i}
-            className={`w-1 rounded-full bg-white/70 transition-all ${
+            className={`w-1 rounded-full bg-fluent-purple/30 transition-all ${
               isPlaying ? "animate-bounce-soft" : ""
             }`}
             style={{
@@ -121,10 +120,10 @@ export function PronunciationController({
       </div>
 
       {/* Speed slider — reading.com controller */}
-      <div className="w-full max-w-xs rounded-2xl bg-white/10 p-4 backdrop-blur">
-        <div className="mb-2 flex justify-between text-sm text-white/90">
+      <div className="w-full max-w-xs rounded-2xl bg-white p-4 shadow-soft">
+        <div className="mb-2 flex justify-between text-sm text-fluent-purple-dark">
           <span>🐢 Slow down</span>
-          <span className="font-semibold text-fluent-yellow">
+          <span className="font-bold text-fluent-purple">
             {playbackRateLabel(playbackRate)}
           </span>
         </div>
@@ -137,7 +136,7 @@ export function PronunciationController({
           className="w-full"
           aria-label="Pronunciation speed"
         />
-        <div className="mt-1 flex justify-between text-xs text-white/50">
+        <div className="mt-1 flex justify-between text-xs text-fluent-purple-dark/50">
           <span>Slow</span>
           <span>Normal</span>
         </div>
@@ -182,7 +181,7 @@ export function PronunciationController({
       </div>
 
       {item.audioSource && (
-        <p className="max-w-xs text-center text-xs text-white/40">
+        <p className="max-w-xs text-center text-xs text-fluent-purple-dark/40">
           Audio: {item.audioSource}
         </p>
       )}

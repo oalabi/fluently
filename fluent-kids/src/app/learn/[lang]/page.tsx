@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { AppHeader } from "@/components/layout/AppHeader";
 import { JourneyMap } from "@/components/JourneyMap";
-import { RangerGuide } from "@/components/characters/LanguageMascot";
+import { JourneyGuide } from "@/components/characters/LanguageCharacter";
 import { useProgress } from "@/context/ProgressContext";
 
 const SIDEBAR = [
@@ -28,17 +28,19 @@ export default function LearnHomePage({
       />
 
       <div className="flex flex-1 flex-col gap-4 overflow-y-auto p-4 pb-2 no-scrollbar">
-        <div className="flex items-center justify-between rounded-2xl bg-white/10 px-4 py-3">
+        <div className="flex items-center justify-between rounded-2xl bg-white px-4 py-3 shadow-soft">
           <div>
-            <p className="text-xs text-white/60">XP</p>
-            <p className="text-xl font-bold text-fluent-yellow">{progress.xp}</p>
+            <p className="text-xs text-fluent-purple-dark/50">XP</p>
+            <p className="text-xl font-extrabold text-fluent-purple">{progress.xp}</p>
           </div>
           <div>
-            <p className="text-xs text-white/60">Streak</p>
-            <p className="text-xl font-bold text-white">🔥 {progress.streak}</p>
+            <p className="text-xs text-fluent-purple-dark/50">Streak</p>
+            <p className="text-xl font-extrabold text-fluent-purple-dark">
+              🔥 {progress.streak}
+            </p>
           </div>
           <div>
-            <p className="text-xs text-white/60">Trophies</p>
+            <p className="text-xs text-fluent-purple-dark/50">Trophies</p>
             <p className="text-xl">{progress.trophies.length > 0 ? "🏆" : "—"}</p>
           </div>
         </div>
@@ -48,10 +50,10 @@ export default function LearnHomePage({
             <Link
               key={item.label}
               href={`/learn/${params.lang}/${item.href === "lesson" ? "" : item.href}`.replace(/\/$/, "") || `/learn/${params.lang}`}
-              className={`flex shrink-0 items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold ${
+              className={`flex shrink-0 items-center gap-2 rounded-full px-4 py-2 text-sm font-bold shadow-soft ${
                 item.active
-                  ? "bg-white text-fluent-purple-dark"
-                  : "bg-white/10 text-white"
+                  ? "bg-fluent-purple text-white"
+                  : "bg-white text-fluent-purple-dark"
               }`}
             >
               <span>{item.icon}</span>
@@ -61,7 +63,7 @@ export default function LearnHomePage({
         </nav>
 
         <div className="flex justify-center -mb-2">
-          <RangerGuide className="h-24 w-32" />
+          <JourneyGuide className="h-28 w-28" />
         </div>
 
         <JourneyMap
@@ -72,12 +74,14 @@ export default function LearnHomePage({
 
         <Link
           href={`/learn/${params.lang}/games`}
-          className="flex items-center gap-4 rounded-2xl bg-gradient-to-r from-fluent-blue to-fluent-green p-4 active:scale-[0.98]"
+          className="flex items-center gap-4 rounded-2xl bg-white p-4 shadow-card active:scale-[0.98] ring-2 ring-fluent-purple/10"
         >
-          <span className="text-4xl">🎯</span>
+          <span className="flex h-14 w-14 items-center justify-center rounded-2xl bg-ring-green text-3xl">
+            🎯
+          </span>
           <div>
-            <p className="font-bold text-white">Quick Play</p>
-            <p className="text-sm text-white/80">
+            <p className="font-extrabold text-fluent-purple-dark">Quick Play</p>
+            <p className="text-sm text-fluent-purple-dark/60">
               Flashcards, matching, bingo & more
             </p>
           </div>

@@ -1,47 +1,51 @@
 import Link from "next/link";
+import { PlayfulBackground } from "@/components/art/PlayfulBackground";
+import { FluentLogo } from "@/components/art/FluentLogo";
+import { KidCharacter } from "@/components/characters/KidCharacter";
 
 export default function SplashPage() {
   return (
-    <main className="mobile-shell min-h-dvh bg-fluent-purple">
-      <div className="flex flex-1 flex-col items-center justify-center px-8 text-center">
-        <div className="mb-8">
-          <h1 className="font-display text-6xl font-extrabold lowercase tracking-tight text-white">
-            fluent
-            <span className="relative">
-              <span className="absolute -right-3 -top-4 h-3 w-3 rounded-full bg-pink-400" />
-            </span>
-          </h1>
-          <p className="mt-2 text-sm text-white/60">kids</p>
+    <main className="mobile-shell onboarding-bg relative min-h-dvh">
+      <PlayfulBackground />
+
+      <div className="relative z-10 flex flex-1 flex-col items-center justify-center px-8 text-center">
+        <div className="mb-6">
+          <FluentLogo />
+          <p className="mt-3 text-sm font-semibold text-fluent-purple-soft">kids</p>
         </div>
 
-        <p className="mb-12 max-w-xs text-lg leading-relaxed text-white/90">
+        <p className="mb-10 max-w-xs text-lg font-medium leading-relaxed text-fluent-purple-dark">
           Teach your child to speak and read like a native.
         </p>
 
-        <div className="relative mb-12">
-          <div className="flex h-40 w-40 items-center justify-center rounded-full bg-fluent-purple-light/50 ring-4 ring-white/20">
-            <span className="text-7xl">👧🏾📱</span>
+        <div className="relative mb-10 animate-float">
+          <div className="shadow-avatar-glow flex h-44 w-44 items-center justify-center rounded-full bg-white p-2">
+            <div className="h-full w-full overflow-hidden rounded-full bg-ring-purple p-1">
+              <KidCharacter variant="amara" />
+            </div>
           </div>
-          <span className="absolute -bottom-2 -right-2 rounded-full bg-fluent-yellow px-3 py-1 text-sm font-bold text-fluent-purple-dark">
+          <span className="absolute -bottom-1 -right-1 rounded-full bg-fluent-yellow px-4 py-1.5 text-sm font-bold text-fluent-purple-dark shadow-soft">
             Ages 3+
           </span>
         </div>
 
         <Link
-          href="/languages"
-          className="touch-target w-full max-w-xs rounded-full bg-white py-4 text-center text-lg font-bold text-fluent-purple-dark shadow-card active:scale-95"
+          href="/learners"
+          className="touch-target w-full max-w-xs rounded-full bg-fluent-purple py-4 text-center text-lg font-bold text-white shadow-card active:scale-95"
         >
           Start learning →
         </Link>
         <Link
           href="/parent"
-          className="touch-target mt-4 text-sm text-white/50 underline"
+          className="touch-target mt-4 text-sm font-semibold text-fluent-purple-dark/50 underline"
         >
           Parent dashboard
         </Link>
       </div>
 
-      <p className="pb-8 text-center text-sm text-white/50">iamfluent.com</p>
+      <p className="relative z-10 pb-8 text-center text-sm text-fluent-purple-soft">
+        iamfluent.com
+      </p>
     </main>
   );
 }

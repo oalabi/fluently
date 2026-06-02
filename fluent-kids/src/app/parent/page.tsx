@@ -2,6 +2,8 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { PlayfulBackground } from "@/components/art/PlayfulBackground";
+import { FluentLogo } from "@/components/art/FluentLogo";
 import {
   exportProgressJson,
   importProgressJson,
@@ -62,123 +64,124 @@ export default function ParentDashboardPage() {
 
   if (!mounted) {
     return (
-      <main className="mobile-shell flex min-h-dvh items-center justify-center bg-fluent-purple-dark">
-        <p className="text-white">Loading dashboard…</p>
+      <main className="mobile-shell flex min-h-dvh items-center justify-center onboarding-bg">
+        <p className="font-semibold text-fluent-purple animate-pulse">Loading…</p>
       </main>
     );
   }
 
-  const totalXp =
-    allProgress.yoruba.xp + allProgress.twi.xp;
+  const totalXp = allProgress.yoruba.xp + allProgress.twi.xp;
   const totalLessons =
     allProgress.yoruba.completedLessons.length +
     allProgress.twi.completedLessons.length;
 
   return (
-    <main className="mobile-shell min-h-dvh bg-fluent-purple-dark">
-      <header className="border-b border-white/10 px-4 py-4">
-        <Link href="/" className="text-sm text-white/60">
-          ← Back to app
-        </Link>
-        <h1 className="mt-2 text-2xl font-bold text-white">Parent Dashboard</h1>
-        <p className="text-sm text-white/60">
-          View progress saved on this device. Export to move to another tablet.
-        </p>
-      </header>
-
-      <div className="flex flex-col gap-4 p-4 pb-10">
-        <div className="grid grid-cols-2 gap-3">
-          <div className="rounded-2xl bg-white/10 p-4 text-center">
-            <p className="text-3xl font-bold text-fluent-yellow">{totalXp}</p>
-            <p className="text-xs text-white/60">Total XP</p>
+    <main className="mobile-shell onboarding-bg relative min-h-dvh">
+      <PlayfulBackground />
+      <div className="relative z-10 flex flex-col">
+        <header className="px-4 py-6">
+          <Link href="/" className="text-sm font-semibold text-fluent-purple-dark/50">
+            ← Back to app
+          </Link>
+          <div className="mt-4 flex justify-center">
+            <FluentLogo />
           </div>
-          <div className="rounded-2xl bg-white/10 p-4 text-center">
-            <p className="text-3xl font-bold text-fluent-green">{totalLessons}</p>
-            <p className="text-xs text-white/60">Lessons done</p>
-          </div>
-        </div>
-
-        {languages.map((lang) => {
-          const p = allProgress[lang.code as LanguageCode];
-          return (
-            <div key={lang.code} className="rounded-2xl bg-white/10 p-4">
-              <div className="flex items-center justify-between">
-                <h2 className="text-lg font-bold text-white">
-                  {lang.flagEmoji} {lang.name}
-                </h2>
-                <Link
-                  href={`/learn/${lang.code}`}
-                  className="text-sm text-fluent-sky-light"
-                >
-                  Open →
-                </Link>
-              </div>
-              <div className="mt-3 grid grid-cols-3 gap-2 text-center text-sm">
-                <div>
-                  <p className="font-bold text-fluent-yellow">{p.xp}</p>
-                  <p className="text-white/50">XP</p>
-                </div>
-                <div>
-                  <p className="font-bold text-white">{p.completedLessons.length}</p>
-                  <p className="text-white/50">Lessons</p>
-                </div>
-                <div>
-                  <p className="font-bold text-white">{p.streak}</p>
-                  <p className="text-white/50">Streak</p>
-                </div>
-              </div>
-              <p className="mt-2 text-xs text-white/40">
-                Last played:{" "}
-                {new Date(p.lastPlayedAt).toLocaleString()}
-              </p>
-              {p.trophies.length > 0 && (
-                <p className="mt-1 text-sm text-fluent-yellow">
-                  🏆 {p.trophies.join(", ")}
-                </p>
-              )}
-            </div>
-          );
-        })}
-
-        <section className="rounded-2xl border border-white/10 p-4">
-          <h3 className="font-bold text-white">Cloud sync (beta)</h3>
-          <p className="mt-1 text-sm text-white/60">
-            Export progress as JSON and paste it on another device to restore.
-            Full cloud accounts coming soon.
+          <h1 className="mt-4 text-center text-2xl font-extrabold text-fluent-purple-dark">
+            Parent Dashboard
+          </h1>
+          <p className="mt-1 text-center text-sm text-fluent-purple-dark/60">
+            View progress on this device · export to sync tablets
           </p>
-          <button
-            type="button"
-            onClick={handleExport}
-            className="touch-target mt-3 w-full rounded-full bg-fluent-blue py-3 font-semibold text-white"
-          >
-            Copy progress to clipboard
-          </button>
-          <textarea
-            value={importText}
-            onChange={(e) => setImportText(e.target.value)}
-            placeholder="Paste exported JSON here to restore…"
-            className="mt-3 w-full rounded-xl bg-black/30 p-3 text-sm text-white placeholder:text-white/30"
-            rows={4}
-          />
-          <button
-            type="button"
-            onClick={handleImport}
-            className="touch-target mt-2 w-full rounded-full bg-fluent-green py-3 font-semibold text-white"
-          >
-            Import progress
-          </button>
-        </section>
+        </header>
 
-        {message && (
-          <p className="text-center text-sm text-fluent-yellow">{message}</p>
-        )}
+        <div className="flex flex-col gap-4 px-4 pb-10">
+          <div className="grid grid-cols-2 gap-3">
+            <div className="rounded-2xl bg-white p-4 text-center shadow-soft">
+              <p className="text-3xl font-extrabold text-fluent-purple">{totalXp}</p>
+              <p className="text-xs font-semibold text-fluent-purple-dark/50">Total XP</p>
+            </div>
+            <div className="rounded-2xl bg-white p-4 text-center shadow-soft">
+              <p className="text-3xl font-extrabold text-fluent-green">{totalLessons}</p>
+              <p className="text-xs font-semibold text-fluent-purple-dark/50">
+                Lessons done
+              </p>
+            </div>
+          </div>
 
-        <Link
-          href="/languages"
-          className="touch-target block rounded-full bg-white py-4 text-center font-bold text-fluent-purple-dark"
-        >
-          Child view — Start learning
-        </Link>
+          {languages.map((lang) => {
+            const p = allProgress[lang.code as LanguageCode];
+            return (
+              <div key={lang.code} className="rounded-2xl bg-white p-4 shadow-soft">
+                <div className="flex items-center justify-between">
+                  <h2 className="text-lg font-extrabold text-fluent-purple-dark">
+                    {lang.flagEmoji} {lang.name}
+                  </h2>
+                  <Link
+                    href={`/learn/${lang.code}`}
+                    className="text-sm font-bold text-fluent-purple"
+                  >
+                    Open →
+                  </Link>
+                </div>
+                <div className="mt-3 grid grid-cols-3 gap-2 text-center text-sm">
+                  <div>
+                    <p className="font-extrabold text-fluent-purple">{p.xp}</p>
+                    <p className="text-fluent-purple-dark/50">XP</p>
+                  </div>
+                  <div>
+                    <p className="font-extrabold">{p.completedLessons.length}</p>
+                    <p className="text-fluent-purple-dark/50">Lessons</p>
+                  </div>
+                  <div>
+                    <p className="font-extrabold">{p.streak}</p>
+                    <p className="text-fluent-purple-dark/50">Streak</p>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+
+          <section className="rounded-2xl bg-white p-4 shadow-soft">
+            <h3 className="font-extrabold text-fluent-purple-dark">Cloud sync (beta)</h3>
+            <p className="mt-1 text-sm text-fluent-purple-dark/60">
+              Copy progress JSON to move between devices.
+            </p>
+            <button
+              type="button"
+              onClick={handleExport}
+              className="touch-target mt-3 w-full rounded-full bg-fluent-purple py-3 font-bold text-white shadow-soft"
+            >
+              Copy progress to clipboard
+            </button>
+            <textarea
+              value={importText}
+              onChange={(e) => setImportText(e.target.value)}
+              placeholder="Paste exported JSON here…"
+              className="mt-3 w-full rounded-xl border border-fluent-purple/10 bg-fluent-lavender p-3 text-sm text-fluent-purple-dark"
+              rows={4}
+            />
+            <button
+              type="button"
+              onClick={handleImport}
+              className="touch-target mt-2 w-full rounded-full bg-fluent-green py-3 font-bold text-white"
+            >
+              Import progress
+            </button>
+          </section>
+
+          {message && (
+            <p className="text-center text-sm font-semibold text-fluent-purple">
+              {message}
+            </p>
+          )}
+
+          <Link
+            href="/learners"
+            className="touch-target block rounded-full bg-fluent-purple py-4 text-center text-lg font-bold text-white shadow-card"
+          >
+            Child view — Start learning
+          </Link>
+        </div>
       </div>
     </main>
   );

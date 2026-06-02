@@ -16,11 +16,11 @@ export function AppHeader({
   showMenu = true,
 }: AppHeaderProps) {
   return (
-    <header className="sticky top-0 z-50 flex items-center gap-3 bg-fluent-purple-dark/95 px-4 py-3 backdrop-blur">
+    <header className="sticky top-0 z-50 flex items-center gap-3 bg-fluent-lavender/95 px-4 py-3 backdrop-blur border-b border-fluent-purple/10">
       {backHref ? (
         <Link
           href={backHref}
-          className="touch-target flex items-center justify-center rounded-lg text-white/90"
+          className="touch-target flex h-10 w-10 items-center justify-center rounded-xl bg-white text-lg font-bold text-fluent-purple shadow-soft"
           aria-label="Go back"
         >
           ←
@@ -28,23 +28,25 @@ export function AppHeader({
       ) : showMenu ? (
         <button
           type="button"
-          className="touch-target flex flex-col justify-center gap-1 rounded-lg p-2"
+          className="touch-target flex h-10 w-10 flex-col items-center justify-center gap-1 rounded-xl bg-white shadow-soft"
           aria-label="Menu"
         >
-          <span className="h-0.5 w-5 bg-white" />
-          <span className="h-0.5 w-5 bg-white" />
-          <span className="h-0.5 w-5 bg-white" />
+          <span className="h-0.5 w-4 rounded bg-fluent-purple" />
+          <span className="h-0.5 w-4 rounded bg-fluent-purple" />
+          <span className="h-0.5 w-4 rounded bg-fluent-purple" />
         </button>
       ) : (
         <span className="w-10" />
       )}
       <div className="flex-1 text-center">
-        <h1 className="text-lg font-bold text-white">{title}</h1>
+        <h1 className="text-lg font-extrabold text-fluent-purple-dark">{title}</h1>
         {subtitle && (
-          <p className="text-xs text-white/60 truncate">{subtitle}</p>
+          <p className="text-xs text-fluent-purple-dark/60 truncate">{subtitle}</p>
         )}
       </div>
-      <span className="w-10 text-center text-white/80">🔍</span>
+      <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-white text-fluent-purple shadow-soft">
+        🔍
+      </span>
     </header>
   );
 }
