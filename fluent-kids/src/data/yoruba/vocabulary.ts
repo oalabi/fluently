@@ -1,0 +1,150 @@
+import { VocabItem } from "@/types/curriculum";
+
+/**
+ * Vocabulary sourced for kid-friendly lessons.
+ * Audio: BibleTTS (CC BY-SA 4.0) via OpenSLR SLR129 / open.bible where noted;
+ * supplementary clips from Wikimedia Commons where available.
+ */
+export const yorubaVocabulary: VocabItem[] = [
+  {
+    id: "yo-greeting-morning",
+    native: "Ẹ káàárọ̀",
+    english: "Good morning (respectful)",
+    phonetic: "E kaaro",
+    imageEmoji: "🌅",
+    audioSource: "BibleTTS Yoruba / open.bible — lesson vocabulary",
+  },
+  {
+    id: "yo-greeting-hello",
+    native: "Báwo ni",
+    english: "How are you?",
+    phonetic: "Bawo ni",
+    imageEmoji: "👋",
+  },
+  {
+    id: "yo-greeting-fine",
+    native: "Mo wà dáadáa",
+    english: "I am fine",
+    phonetic: "Mo wa daadaa",
+    imageEmoji: "😊",
+  },
+  {
+    id: "yo-thanks",
+    native: "Ẹ ṣé",
+    english: "Thank you",
+    phonetic: "E se",
+    imageEmoji: "🙏",
+  },
+  {
+    id: "yo-mother",
+    native: "Ìyá",
+    english: "Mother",
+    phonetic: "Iya",
+    imageEmoji: "👩",
+  },
+  {
+    id: "yo-father",
+    native: "Bàbá",
+    english: "Father",
+    phonetic: "Baba",
+    imageEmoji: "👨",
+  },
+  {
+    id: "yo-water",
+    native: "Omi",
+    english: "Water",
+    phonetic: "Omi",
+    imageEmoji: "💧",
+  },
+  {
+    id: "yo-food",
+    native: "Oúnjẹ",
+    english: "Food",
+    phonetic: "Ounje",
+    imageEmoji: "🍲",
+  },
+  {
+    id: "yo-one",
+    native: "Ọ̀kan",
+    english: "One",
+    phonetic: "Okan",
+    imageEmoji: "1️⃣",
+  },
+  {
+    id: "yo-two",
+    native: "Èjì",
+    english: "Two",
+    phonetic: "Eji",
+    imageEmoji: "2️⃣",
+  },
+  {
+    id: "yo-three",
+    native: "Ẹ̀ta",
+    english: "Three",
+    phonetic: "Eta",
+    imageEmoji: "3️⃣",
+  },
+  {
+    id: "yo-red",
+    native: "Pupa",
+    english: "Red",
+    phonetic: "Pupa",
+    imageEmoji: "🔴",
+  },
+  {
+    id: "yo-blue",
+    native: "Búlúù",
+    english: "Blue",
+    phonetic: "Buluu",
+    imageEmoji: "🔵",
+  },
+  {
+    id: "yo-run",
+    native: "Sáré",
+    english: "Run",
+    phonetic: "Sare",
+    imageEmoji: "🏃",
+  },
+  {
+    id: "yo-sing",
+    native: "Kọrin",
+    english: "Sing",
+    phonetic: "Korin",
+    imageEmoji: "🎵",
+  },
+  {
+    id: "yo-friend",
+    native: "Ọ̀rẹ́",
+    english: "Friend",
+    phonetic: "Ore",
+    imageEmoji: "🤝",
+  },
+  {
+    id: "yo-school",
+    native: "Ilé-ìwé",
+    english: "School",
+    phonetic: "Ile-iwe",
+    imageEmoji: "🏫",
+  },
+  {
+    id: "yo-come",
+    native: "Wá",
+    english: "Come",
+    phonetic: "Wa",
+    imageEmoji: "👉",
+  },
+  {
+    id: "yo-go",
+    native: "Lọ",
+    english: "Go",
+    phonetic: "Lo",
+    imageEmoji: "🚶",
+  },
+  {
+    id: "yo-love",
+    native: "Fẹ́",
+    english: "Love / to want",
+    phonetic: "Fe",
+    imageEmoji: "❤️",
+  },
+];
